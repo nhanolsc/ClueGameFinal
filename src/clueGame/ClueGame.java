@@ -35,6 +35,8 @@ public class ClueGame extends JFrame {
 	private DetectiveNotes notes;
 	private ControlGUI control;
 	private DisplayCards displayCards;
+//	private MakeaGuess mkGuess;
+
 	
 	private boolean humanMustFinish = false;
 

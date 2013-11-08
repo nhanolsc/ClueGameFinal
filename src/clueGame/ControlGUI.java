@@ -13,6 +13,7 @@ public class ControlGUI extends JPanel {
 
 	private ClueGame game;
 	private ArrayList<Player> players;
+	private ArrayList<Card> cards;
 	private Board board;
 	private Die die;
 	private Guess guess;
@@ -29,8 +30,10 @@ public class ControlGUI extends JPanel {
 		die = new Die();
 		guess = new Guess();
 		result = new GuessResult();
+		
+		
 		mkGuess= new MakeaGuess();
-
+		
 		setSize(750, 300);
 		createLayout();
 	}
@@ -49,6 +52,10 @@ public class ControlGUI extends JPanel {
 		nextPlayer = new JButton("Next Player");
 		nextPlayer.addActionListener(new ButtonListener());
 		accuse = new JButton("Make an Accusation");
+		
+		
+
+
 		topPanel.setLayout(new GridLayout(1,3));
 		topPanel.add(turnPanel);
 		topPanel.add(nextPlayer);

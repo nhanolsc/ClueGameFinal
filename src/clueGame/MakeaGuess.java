@@ -4,7 +4,6 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
 import javax.swing.*;
 
 import clueGame.Card.CardType;
@@ -18,11 +17,10 @@ public class MakeaGuess extends JDialog{
 	private boolean submitted;
 	private Board board;
 	private ClueGame game;
-	private ControlGUI gui;
 	
 
 	public MakeaGuess() {
-		JPanel arrange = new JPanel(new GridLayout(6,1));
+		JPanel arrange = new JPanel(new GridLayout(0,2));
 		personLabel = new JLabel("Person");
 		weaponLabel = new JLabel("Weapon");
 		roomLabel = new JLabel("Room");
@@ -50,13 +48,18 @@ public class MakeaGuess extends JDialog{
 		arrange.add(room);
 		arrange.add(weaponLabel);
 		arrange.add(weapon);
+		arrange.add(submit);
+		arrange.add(cancel);
 		add(arrange);
 
 
 		submit.addActionListener(new ListenToGuess());
 		cancel.addActionListener(new ListenToGuess());
 	}
-	private class ListenToGuess implements ActionListener{
+
+	public class ListenToGuess implements ActionListener{
+	private MakeaGuess mkGuess;
+		//mkGuess= new MakeaGuess(cards);
 		public void actionPerformed(ActionEvent e){
 			if(e.getSource()== submit){
 				submitted = true;
@@ -77,9 +80,11 @@ public class MakeaGuess extends JDialog{
 				else{
 					JOptionPane.showMessageDialog(game, "Your Accusation is Incorrect", "SORRY", JOptionPane.INFORMATION_MESSAGE);
 				}
-				gui.mkGuess.setVisible(false);
 			}
+			mkGuess.setVisible(false);
 		}
 	}
+
+	
 
 }
