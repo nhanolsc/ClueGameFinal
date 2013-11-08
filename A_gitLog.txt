@@ -1,0 +1,49 @@
+* one more test for room selection
+* passing tests for makeSuggestion
+* failing tests for createSuggestion
+* passing tests for disproveSuggestion
+* failing tests for disprove suggestion
+* pickLocation passing tests
+* failing tests for pickLocation, also config files
+* added a few more comments to ClueGame
+* added a few comments, deleted white space
+* failing test for checkAccusation
+* added a few comments, skeleton for accusation test
+*   Merge branch 'master' of https://github.com/sfalkens/ClueBoardPartII
+|\  
+| * Delete TargetTests.java
+| * Delete InstructorTests.java
+| * Delete BoardTest.java
+* | testCards and testDeal pass now
+* | got the testPlayersFromFile to pass
+* | wrote GameSeup failing tests, added a few card and player functions
+|/  
+*   Merge branch 'master' of https://github.com/sfalkens/ClueBoardPartII
+|\  
+| * Edit
+* | skeleton classes for Clue Player added
+|/  
+* first commit on our end with a few edits
+* Made fix for entering room- all tests passing
+* All passig except for testTargetEnterDoorway
+* Fixed test layout
+* All tests running now but 1.5!
+* All adjacency tests working
+* Added file to help check index tests
+* Finished last tests required for part II
+* Added stub file for adjacency and target tests
+* Updated to run with instructor's tests
+* All tests working
+* Fixes to make numberOfDoors test pass again
+* Got exceptionTestBadRoomFormat passing
+* All exception tests now throwing exceptions
+* Changed 'expected' to BadConfigFormat for exception tests
+* Changed name of input file to match file
+* Added ignore file
+* Added changes from Danny
+* Deleted throws Eception
+* Added bad config files for testing exception throwing
+* Updated Board and Cell classes for door tests to pass
+* Worked on tests for doorways- still not passing
+* Fixed testRoomInitial to pass
+* Initial commit

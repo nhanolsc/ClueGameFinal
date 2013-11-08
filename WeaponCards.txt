@@ -1,0 +1,6 @@
+Pipe
+Knife
+Wrench
+Candlestick
+Revolver
+Rope

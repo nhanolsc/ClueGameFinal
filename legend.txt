@@ -1,0 +1,11 @@
+G, Garden
+B, Bedroom
+O, Observatory
+L, Library
+H, Hallway
+D, Dining Room
+K, Kitchen
+S, Study
+X, Closet
+W, Walkway
+R, Billiard Room

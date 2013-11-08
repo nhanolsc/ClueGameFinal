@@ -1,0 +1,6 @@
+Miss Scarlet,red,8,7
+Colonel Mustard,orange,0,0
+Mrs White,white,16,13
+Mr Green,green,1,19
+Mrs Peacock,blue,22,7
+Professor Plum,magenta,23,17
