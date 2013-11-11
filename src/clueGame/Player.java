@@ -58,7 +58,7 @@ public abstract class Player extends JPanel{
 		return new Solution(person, weapon, room);
 	}
 	
-	public abstract void makeMove(Set<Integer> targets, ArrayList<BoardCell> cells, Board board);
+	public abstract Solution makeMove(Set<Integer> targets, ArrayList<BoardCell> cells, Board board, ArrayList<Card> cards);
 
 	public String getName() {
 		return name;

@@ -12,6 +12,7 @@ import clueGame.Card.CardType;
 public class ComputerPlayer extends Player{
 	private char lastRoomVisited;
 	private Set<Card> saw;
+	private Solution storedSuggest;
 	
 	public ComputerPlayer() {
 		super();
@@ -27,7 +28,6 @@ public class ComputerPlayer extends Player{
 	{
 		Random rand = new Random();
 		int moveCount = targets.size();
-		System.out.println("target size: " + moveCount);
 		int r = rand.nextInt(moveCount);
 		// checks the entire target list for a room cell
 		for (int choice : targets) {
@@ -79,6 +79,7 @@ public class ComputerPlayer extends Player{
 		r = rand.nextInt(possibleWeapons.size());
 		suggestion.weapon = possibleWeapons.get(r);
 		
+		storedSuggest = suggestion;
 		return suggestion;
 	}
 
@@ -87,13 +88,30 @@ public class ComputerPlayer extends Player{
 		saw.add(seen);
 	}
 	
-	public void makeMove(Set<Integer> targets, ArrayList<BoardCell> cells, Board board) {
-		BoardCell move = pickLocation(targets, cells);
-		row = move.getRow();
-		col = move.getColumn();
-		//System.out.println(row);
-		//System.out.println(col);
-		//repaint();
+	public Solution makeMove(Set<Integer> targets, ArrayList<BoardCell> cells, Board board, ArrayList<Card> cards) {
+		if (cards.size() - saw.size() == 3) {		// change this
+			String person, weapon, room;
+			person = weapon = room = "";
+			for (Card card : cards) {
+				if (!saw.contains(card)) {
+					if (card.getType() == CardType.PERSON)
+						person = card.getName();
+					else if (card.getType() == CardType.WEAPON)
+						weapon = card.getName();
+					else if (card.getType() == CardType.ROOM)
+						room = card.getName();
+				}
+			}
+			return makeAccusation(person, weapon, room);
+		}
+		else {
+			BoardCell move = pickLocation(targets, cells);
+			row = move.getRow();
+			col = move.getColumn();
+			if (board.getRoomCellAt(row, col) != null)
+				createSuggestion(board.getRooms().get(board.getRoomCellAt(row, col)),  cards);
+			return new Solution("","","");
+		}
 	}
 	
 	// for testing purposes only

@@ -68,7 +68,6 @@ public class Board extends JPanel implements MouseListener {
 		
 	}
 
-
 	public void loadLegend() throws FileNotFoundException, BadConfigFormatException {
 		FileReader reader = new FileReader(legendConfig);
 		Scanner in = new Scanner(reader);

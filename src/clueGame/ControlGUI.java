@@ -23,6 +23,7 @@ public class ControlGUI extends JPanel {
 	private int currentIndex = -1;
 	Player currentPlayer;
 	private JButton nextPlayer, accuse;
+	
 	public ControlGUI(ClueGame game) {
 		this.game = game;
 		board = game.getArea();
@@ -30,9 +31,9 @@ public class ControlGUI extends JPanel {
 		die = new Die();
 		guess = new Guess();
 		result = new GuessResult();
+		cards = game.getCards();
 		
-		
-		mkGuess= new MakeaGuess();
+		mkGuess= new MakeaGuess(cards);
 		
 		setSize(750, 300);
 		createLayout();
@@ -52,9 +53,6 @@ public class ControlGUI extends JPanel {
 		nextPlayer = new JButton("Next Player");
 		nextPlayer.addActionListener(new ButtonListener());
 		accuse = new JButton("Make an Accusation");
-		
-		
-
 
 		topPanel.setLayout(new GridLayout(1,3));
 		topPanel.add(turnPanel);
@@ -67,7 +65,23 @@ public class ControlGUI extends JPanel {
 		bottomPanel.add(guess);	
 		bottomPanel.add(result);	
 		add(bottomPanel);
-
+	}
+	
+	public void startMove() {
+		if (currentIndex < players.size()-1)
+			currentIndex++;
+		else
+			currentIndex = 0;
+		if (currentIndex == game.humanIndex)
+			game.setHumanMustFinish(true);
+		currentPlayer = players.get(currentIndex);
+		die.roll();
+		updateTurn();
+		int steps = die.getResult();
+		int location = board.calcIndex(currentPlayer.getRow(), currentPlayer.getCol());
+		Set<Integer> targets = board.getTargets(location, steps);
+		currentPlayer.makeMove(targets, board.getCells(), board, cards);
+		board.repaint();
 	}
 
 	public class ButtonListener implements ActionListener
@@ -92,32 +106,8 @@ public class ControlGUI extends JPanel {
 			}
 		}
 	}
-	
-	
-
-		public void startMove() {
-			if (currentIndex < players.size()-1)
-				currentIndex++;
-			else
-				currentIndex = 0;
-			if (currentIndex == game.humanIndex)
-				game.setHumanMustFinish(true);
-			currentPlayer = players.get(currentIndex);
-			die.roll();
-			updateTurn();
-			int steps = die.getResult();
-			int location = board.calcIndex(currentPlayer.getRow(), currentPlayer.getCol());
-			Set<Integer> targets = board.getTargets(location, steps);
-			currentPlayer.makeMove(targets, board.getCells(), board);
-			board.repaint();
-		}
 
 		public void updateTurn() {
 			whoseTurn.setText(players.get(currentIndex).getName());
-		}
-
-		public static void main(String[] args) {
-			//ControlGUI gui = new ControlGUI();
-			//gui.setVisible(true);
 		}
 	}

@@ -19,11 +19,14 @@ public class MakeaGuess extends JDialog{
 	private ClueGame game;
 	
 
-	public MakeaGuess() {
+	public MakeaGuess(ArrayList<Card> cards) {
 		JPanel arrange = new JPanel(new GridLayout(0,2));
 		personLabel = new JLabel("Person");
 		weaponLabel = new JLabel("Weapon");
 		roomLabel = new JLabel("Room");
+		
+		// I think we'll have to pass in the cards, that's why the null pointer exception was happening
+		this.cards = cards;
 
 		submit= new JButton("Submit");
 		cancel= new JButton("Cancel");
