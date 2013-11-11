@@ -9,7 +9,7 @@ import javax.swing.*;
 import clueGame.Card.CardType;
 
 
-public class MakeaGuess extends JDialog{
+public class MakeanAccusation extends JDialog{
 	private JComboBox person, room, weapon;
 	private ArrayList<Card> cards;
 	private JButton submit, cancel;
@@ -19,7 +19,7 @@ public class MakeaGuess extends JDialog{
 	private ClueGame game;
 	
 
-	public MakeaGuess() {
+	public MakeanAccusation(ArrayList<Card> cards) {
 		JPanel arrange = new JPanel(new GridLayout(0,2));
 		personLabel = new JLabel("Person");
 		weaponLabel = new JLabel("Weapon");
@@ -58,14 +58,14 @@ public class MakeaGuess extends JDialog{
 	}
 
 	public class ListenToGuess implements ActionListener{
-	private MakeaGuess mkGuess;
+	private MakeanAccusation mkAccusation;
 		//mkGuess= new MakeaGuess(cards);
 		public void actionPerformed(ActionEvent e){
 			if(e.getSource()== submit){
 				submitted = true;
 			}
 			else if(e.getSource()== cancel){
-				mkGuess.setVisible(false);
+				mkAccusation.setVisible(false);
 				submitted= false;
 			}
 			if(submitted == true){
@@ -81,7 +81,7 @@ public class MakeaGuess extends JDialog{
 					JOptionPane.showMessageDialog(game, "Your Accusation is Incorrect", "SORRY", JOptionPane.INFORMATION_MESSAGE);
 				}
 			}
-			mkGuess.setVisible(false);
+			mkAccusation.setVisible(false);
 		}
 	}
 
