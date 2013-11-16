@@ -20,6 +20,8 @@ public class MakeAnAccusation extends JDialog{
 	
 
 	public MakeAnAccusation(ArrayList<Card> cards) {
+		setTitle("Make an Accusation");
+		setSize(300,300);
 		JPanel arrange = new JPanel(new GridLayout(0,2));
 		personLabel = new JLabel("Person");
 		weaponLabel = new JLabel("Weapon");

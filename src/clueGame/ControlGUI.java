@@ -18,7 +18,8 @@ public class ControlGUI extends JPanel {
 	private Die die;
 	private Guess guess;
 	private GuessResult result;
-	private MakeAnAccusation mkGuess;
+	private MakeAnAccusation mkAccusation;
+	private MakeaSuggestion mkSuggestion;
 	// current player index is only -1 at the game start
 	private int currentIndex = -1;
 	Player currentPlayer;
@@ -33,8 +34,8 @@ public class ControlGUI extends JPanel {
 		result = new GuessResult();
 		cards = game.getCards();
 		
-		mkGuess= new MakeAnAccusation(cards);
-		
+		mkAccusation= new MakeAnAccusation(cards);
+		mkSuggestion= new MakeaSuggestion(cards);
 		setSize(750, 300);
 		createLayout();
 	}
@@ -98,7 +99,7 @@ public class ControlGUI extends JPanel {
 			}
 			else if(e.getSource()== accuse){
 				if (game.isHumanMustFinish() && board.isHumanTurn()){
-					mkGuess.setVisible(true);
+					mkAccusation.setVisible(true);
 				}
 				else{
 					JOptionPane.showMessageDialog(game, "It's not your turn", "Error", JOptionPane.INFORMATION_MESSAGE);
