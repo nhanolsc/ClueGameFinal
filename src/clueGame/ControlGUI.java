@@ -18,7 +18,7 @@ public class ControlGUI extends JPanel {
 	private Die die;
 	private Guess guess;
 	private GuessResult result;
-	private MakeAnAccusation mkAccusation;
+	private MakeanAccusation mkAccusation;
 	private MakeaSuggestion mkSuggestion;
 	// current player index is only -1 at the game start
 	private int currentIndex = -1;
@@ -34,7 +34,7 @@ public class ControlGUI extends JPanel {
 		result = new GuessResult();
 		cards = game.getCards();
 		
-		mkAccusation= new MakeAnAccusation(cards);
+		mkAccusation= new MakeanAccusation(cards);
 		mkSuggestion= new MakeaSuggestion(cards);
 		setSize(750, 300);
 		createLayout();
